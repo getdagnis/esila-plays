@@ -1,0 +1,145 @@
+.page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.1);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  --button-primary-hover: #cdcdcdaa;
+  font-family: var(--font-geist-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  padding-bottom: 80px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main li:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: fit-content;
+  gap: 0.5rem;
+  max-width: 60rem;
+  margin: auto;
+}
+
+.btns a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  padding: 1.5rem 1rem;
+  border: none;
+  border: 1px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 20px;
+  font-weight: 500;
+  user-select: none;
+}
+
+a.btnSound {
+  border: solid 2px #cdcdcdaa;
+  background: #cdcdcdaa;
+  cursor: grab;
+}
+
+a.btnSound:active {
+  cursor: grabbing;
+  border-color: crimson;
+}
+
+a.btnSound:hover {
+  border: solid 2px #fff5f5c2;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: fit-content;
+  width: 100%;
+  grid-row-start: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.footer a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer img {
+  flex-shrink: 0;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  a.btnSound:hover {
+    background: var(--button-primary-hover);
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 1rem 0.5rem;
+    padding-bottom: 80px;
+  }
+
+  .main {
+    align-items: center;
+  }
+
+  .btns a {
+    font-size: 12px;
+    padding: 1rem;
+  }
+
+  a.btnSound {
+    min-width: auto;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-height: 600px) {
+  .main {
+    padding: 0;
+    zoom: 0.8;
+  }
+
+  .btns a {
+    padding: 1rem 0.75rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .main {
+    zoom: 1.1;
+  }
+}

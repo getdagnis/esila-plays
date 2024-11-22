@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+
+:root {
+  --bgRed: #f55665;
+  --bgPurple: #8f52fa;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: linear-gradient(to right, var(--bgRed), var(--bgPurple));
+  font-family: 'Henny Penny', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: 'Henny Penny', Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.all-colors {
+  --Applause: #ff8063;
+  --Beat2: #a2ffb3;
+  --Christmas: #a4b5ff;
+  --Cow: #ff91cb;
+  --Cry: #ffee90;
+  --Giggle: #c28cc2;
+  --Goat: #f7dcab;
+  --Horror: #00ffff;
+  --Laugh2: #f5aed1;
+  --Laugh3: #4682b4;
+  --Monks: #cc8181;
+  --Trombone: #d0ebb6;
+  --Violins: #d596a2;
+  --Beat1: #e8cab5;
+  --Beat3: #ffb7ab;
+  --Beat4: #bbb8d2;
+  --Choir: #a9cdcf;
+  --Drums1: #b8b1dc;
+  --Drums2: #ffdab9;
+  --Guitar: #efa5a5;
+  --Laugh: #d4b66c;
+  --Polyphon: #a5d7a5;
+}
