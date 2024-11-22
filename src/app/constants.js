@@ -1,7 +1,7 @@
 export const characters = [
   {
     id: 1,
-    name: 'Char 1',
+    name: 'Alise',
     image: '/images/character1.png',
     description: 'Character 1 description',
   },
