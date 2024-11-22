@@ -47,12 +47,12 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1>Alise's Soundboard 👾</h1>
+        <h1>Alise&#39;s Soundboard 👾</h1>
         <Characters
           onDrop={handleSoundDrop}
           onStop={handleStopSound}
           activeCharacters={Object.keys(characterSounds)
-            .filter((id) => characterSounds[+id]?.length > 0)
+            .filter((id) => isCharacterActive(+id))
             .map(Number)}
         />
         <div className={styles.btns}>
