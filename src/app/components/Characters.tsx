@@ -10,6 +10,7 @@ interface CharactersProps {
 }
 
 export default function Characters({ onDrop, onStop, activeCharacters, animations }: CharactersProps) {
+  console.log('🍌🥕 animations', animations);
   const handleDrop = (event: React.DragEvent, characterId: number) => {
     event.preventDefault();
     const sound = event.dataTransfer.getData('text/plain');

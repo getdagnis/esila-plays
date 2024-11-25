@@ -1,5 +1,5 @@
 'use client';
-import React, { use, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from './animations.module.css';
 import { getColorBySoundName } from './helpers';
 
@@ -205,7 +205,7 @@ export const animateBackground = (animation: string) => {
   background.style.backgroundColor = backgroundColor || '#aaaaaa';
 };
 
-const blinkEyes = (animation: string) => {
+const blinkEyes = () => {
   const eyelids = document.getElementById('alise-acis-ciet');
 
   if (!eyelids) return () => {};

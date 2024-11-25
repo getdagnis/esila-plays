@@ -1,5 +1,5 @@
 'use client';
-import React, { use, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from './animations.module.css';
 import { getColorBySoundName } from './helpers';
 
@@ -205,7 +205,7 @@ export const animateBackground = (animation: string) => {
   background.style.backgroundColor = backgroundColor || '#aaaaaa';
 };
 
-const blinkEyes = (animation: string) => {
+const blinkEyes = () => {
   const eyelids = document.getElementById('char7-acis-ciet');
 
   if (!eyelids) return () => {};
@@ -248,7 +248,7 @@ const drinkTea = (repeat: boolean = true) => {
 
 const wakeUpCharacter = (animation: string) => {
   animateBackground(animation);
-  blinkEyes(animation);
+  blinkEyes();
 };
 
 function animateNormal() {
@@ -286,7 +286,7 @@ function animateBeat(animation: string) {
   }, 2000);
 
   setTimeout(() => {
-    blinkEyes(animation);
+    blinkEyes();
     console.log('🍌🥕 applying infinite animation');
     mouth.classList.add(styles.beat);
     head.classList.add(styles.beat);
@@ -363,7 +363,7 @@ function animateBeat2(animation: string) {
   }, 2000);
 
   setTimeout(() => {
-    blinkEyes(animation);
+    blinkEyes();
     console.log('🍌🥕 applying infinite animation');
     mouth.classList.add(styles.beat2);
     head.classList.add(styles.beat2);
