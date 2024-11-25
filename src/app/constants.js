@@ -1,46 +1,52 @@
-import AliseAnimations from './animations/AliseAnimations';
+import * as animations from './animations';
 
 export const CHARACTERS = [
   {
     id: 2,
     name: 'Char 2',
     image: '/images/character2.png',
+    anim: animations.Char2Animations,
     description: 'Character 2 description',
   },
   {
     id: 3,
     name: 'Char 3',
     image: '/images/character3.png',
+    anim: animations.Char3Animations,
     description: 'Character 3 description',
   },
   {
     id: 4,
     name: 'Char 4',
     image: '/images/character4.png',
+    anim: animations.Char4Animations,
     description: 'Character 4 description',
   },
   {
     id: 1,
     name: 'Alise',
-    anim: AliseAnimations,
+    anim: animations.AliseAnimations,
     description: 'Character 1 description',
   },
   {
     id: 5,
-    name: 'Char ',
+    name: 'Char 5',
     image: '/images/character5.png',
+    anim: animations.Char5Animations,
     description: 'Character 5 description',
   },
   {
     id: 6,
     name: 'Char 6',
     image: '/images/character5.png',
+    anim: animations.Char6Animations,
     description: 'Character 5 description',
   },
   {
     id: 7,
     name: 'Char 7',
     image: '/images/character5.png',
+    anim: animations.Char7Animations,
     description: 'Character 5 description',
   },
 ];

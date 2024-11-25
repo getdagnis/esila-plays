@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Characters.module.css';
 import { CHARACTERS } from '../constants';
-import AliseAnimations from '../animations/AliseAnimations';
 
 interface CharactersProps {
   onDrop: (characterId: number, sound: string) => void;
@@ -22,34 +21,35 @@ export default function Characters({ onDrop, onStop, activeCharacters, animation
   const handleDragOver = (event: React.DragEvent) => {
     event.preventDefault();
   };
-  {
-    /* <div key={character.id}>{character.anim('normal')}</div> */
-  }
+
   return (
     <div className={styles.characters}>
-      {CHARACTERS.map((character) =>
-        character.anim ? (
+      {CHARACTERS.map((character) => {
+        const AnimationComponent = character.anim; // Dynamically get the correct animation component
+        return (
           <div key={character.id}>
-            <AliseAnimations
-              id={character.id}
-              animation={animations[character.id] || 'normal'}
-              onDrop={(e) => handleDrop(e, character.id)}
-              onDragOver={handleDragOver}
-              onStop={onStop}
-            />
+            {AnimationComponent ? (
+              <AnimationComponent
+                id={character.id}
+                animation={animations[character.id] || 'normal'}
+                onDrop={(e) => handleDrop(e, character.id)}
+                onDragOver={handleDragOver}
+                onStop={onStop}
+              />
+            ) : (
+              <div
+                key={character.id}
+                className={`${styles.character} ${activeCharacters.includes(character.id) ? styles.active : ''}`}
+                onDrop={(e) => handleDrop(e, character.id)}
+                onDragOver={handleDragOver}
+                onClick={() => onStop(character.id)}
+              >
+                <p>{character.name}</p>
+              </div>
+            )}
           </div>
-        ) : (
-          <div
-            key={character.id}
-            className={`${styles.character} ${activeCharacters.includes(character.id) ? styles.active : ''}`}
-            onDrop={(e) => handleDrop(e, character.id)}
-            onDragOver={handleDragOver}
-            onClick={() => onStop(character.id)}
-          >
-            <p>{character.name}</p>
-          </div>
-        )
-      )}
+        );
+      })}
     </div>
   );
 }

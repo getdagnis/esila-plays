@@ -101,37 +101,37 @@ const AliseAnimations = ({ animation, id, onDrop, onDragOver, onStop }: AliseAni
   return (
     <div
       key={id}
-      id={`alise-animations`}
+      id={`char4-animations`}
       className={combinedWrapperClasses}
       onDrop={onDrop}
       onDragOver={onDragOver}
       onClick={() => onStop(id)}
     >
-      <div id="alise-background" className={styles.animationBackground}></div>
-      <img id="alise-teja" className={`${styles.partOnTop}`} src="/characters/alise/alise-teja.svg" alt="" />
-      <img id="alise-kermenis" className={styles.partOnTop} src="/characters/alise/alise-kermenis.svg" alt="" />
+      <div id="char4-background" className={styles.animationBackground}></div>
+      <img id="char4-teja" className={`${styles.partOnTop}`} src="/characters/alise/alise-teja.svg" alt="" />
+      <img id="char4-kermenis" className={styles.partOnTop} src="/characters/alise/alise-kermenis.svg" alt="" />
       <img
-        id="alise-galva-bez-mutes"
+        id="char4-galva-bez-mutes"
         className={styles.partOnTop}
         src="/characters/alise/alise-galva-bez-mutes.svg"
         alt=""
       />
       <img
-        id="alise-mute-vala"
+        id="char4-mute-vala"
         style={{ display: 'none' }}
         className={styles.partOnTop}
         src="/characters/alise/alise-mute-vala.svg"
         alt=""
       />
-      <img id="alise-acis-ciet" className={styles.partOnTop} src="/characters/alise/alise-acis-ciet.svg" alt="" />
+      <img id="char4-acis-ciet" className={styles.partOnTop} src="/characters/alise/alise-acis-ciet.svg" alt="" />
       <img
-        id="alise-kakis"
+        id="char4-kakis"
         className={styles.partOnTop}
         src="/characters/alise/alise-kakis.svg"
         style={{ display: 'none' }}
         alt=""
       />
-      <img id="alise-mute-ciet" className={`${styles.partOnTop}`} src="/characters/alise/alise-mute-ciet.svg" alt="" />
+      <img id="char4-mute-ciet" className={`${styles.partOnTop}`} src="/characters/alise/alise-mute-ciet.svg" alt="" />
     </div>
   );
 };
@@ -143,19 +143,19 @@ const timers: NodeJS.Timeout[] = [];
 const intervals: NodeJS.Timeout[] = [];
 
 function resetAll() {
-  const background = document.getElementById('alise-background');
-  const wrapper = document.getElementById('alise-animations');
-  const eyelids = document.getElementById('alise-acis-ciet');
-  const tea = document.getElementById('alise-teja');
-  const mouth = document.getElementById('alise-mute-ciet');
+  const background = document.getElementById('char4-background');
+  const wrapper = document.getElementById('char4-animations');
+  const eyelids = document.getElementById('char4-acis-ciet');
+  const tea = document.getElementById('char4-teja');
+  const mouth = document.getElementById('char4-mute-ciet');
 
   const ids = [
-    'alise-mute-ciet',
-    'alise-galva-bez-mutes',
-    'alise-acis-ciet',
-    'alise-kermenis',
-    'alise-kakis',
-    'alise-teja',
+    'char4-mute-ciet',
+    'char4-galva-bez-mutes',
+    'char4-acis-ciet',
+    'char4-kermenis',
+    'char4-kakis',
+    'char4-teja',
   ];
 
   // Remove classes and inline styles
@@ -193,8 +193,8 @@ function resetAll() {
 }
 
 export const animateBackground = (animation: string) => {
-  const background = document.getElementById('alise-background');
-  const wrapper = document.getElementById('alise-animations');
+  const background = document.getElementById('char4-background');
+  const wrapper = document.getElementById('char4-animations');
   const backgroundColor = getColorBySoundName(animation);
   if (!background) return () => {};
 
@@ -206,7 +206,7 @@ export const animateBackground = (animation: string) => {
 };
 
 const blinkEyes = (animation: string) => {
-  const eyelids = document.getElementById('alise-acis-ciet');
+  const eyelids = document.getElementById('char4-acis-ciet');
 
   if (!eyelids) return () => {};
 
@@ -214,8 +214,8 @@ const blinkEyes = (animation: string) => {
 };
 
 const drinkTea = (repeat: boolean = true) => {
-  const tea = document.getElementById('alise-teja');
-  const mouthOpen = document.getElementById('alise-mute-vala');
+  const tea = document.getElementById('char4-teja');
+  const mouthOpen = document.getElementById('char4-mute-vala');
 
   if (!tea || !mouthOpen) return () => {};
 
@@ -254,7 +254,7 @@ const wakeUpCharacter = (animation: string) => {
 function animateNormal() {
   console.log('🍌🥕 normal');
 
-  const eyelids = document.getElementById('alise-acis-ciet');
+  const eyelids = document.getElementById('char4-acis-ciet');
   console.log('🍌🥕 eyelids', eyelids);
   if (!eyelids) return () => {};
   eyelids.style.display = 'block';
@@ -271,9 +271,9 @@ function animateNormal() {
 }
 
 function animateBeat(animation: string) {
-  const mouth = document.getElementById('alise-mute-ciet');
-  const head = document.getElementById('alise-galva-bez-mutes');
-  const eyelids = document.getElementById('alise-acis-ciet');
+  const mouth = document.getElementById('char4-mute-ciet');
+  const head = document.getElementById('char4-galva-bez-mutes');
+  const eyelids = document.getElementById('char4-acis-ciet');
 
   if (!mouth || !head || !eyelids) return () => {};
 
@@ -295,9 +295,9 @@ function animateBeat(animation: string) {
 }
 
 function animateBeat3(animation: string) {
-  const mouth = document.getElementById('alise-mute-ciet');
-  const head = document.getElementById('alise-galva-bez-mutes');
-  const eyelids = document.getElementById('alise-acis-ciet');
+  const mouth = document.getElementById('char4-mute-ciet');
+  const head = document.getElementById('char4-galva-bez-mutes');
+  const eyelids = document.getElementById('char4-acis-ciet');
 
   if (!mouth || !head || !eyelids) return () => {};
 
@@ -348,9 +348,9 @@ function animateLaugh2(animation: string): () => void {
 }
 
 function animateBeat2(animation: string) {
-  const mouth = document.getElementById('alise-mute-ciet');
-  const head = document.getElementById('alise-galva-bez-mutes');
-  const eyelids = document.getElementById('alise-acis-ciet');
+  const mouth = document.getElementById('char4-mute-ciet');
+  const head = document.getElementById('char4-galva-bez-mutes');
+  const eyelids = document.getElementById('char4-acis-ciet');
 
   if (!mouth || !head || !eyelids) return () => {};
 
