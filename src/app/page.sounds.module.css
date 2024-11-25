@@ -1,0 +1,60 @@
+.btns {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-flow: dense;
+  grid-gap: 0.5rem;
+  margin: auto;
+  width: 100%;
+}
+
+.btns a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  height: fit-content;
+  min-width: 110px;
+  padding: 0.75rem 1rem;
+  border: none;
+  border: 1px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 20px;
+  font-weight: 500;
+  user-select: none;
+}
+
+a.btnSound {
+  border: solid 2px #cdcdcdaa;
+  background: #cdcdcdaa;
+  cursor: grab;
+}
+
+a.btnSound:active {
+  cursor: grabbing;
+  border-color: crimson;
+}
+
+a.btnSound:hover {
+  border: solid 2px #fff5f5c2;
+}
+
+@media (max-width: 780px) {
+  .btns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .btns a {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  a.btnSound {
+    min-width: auto;
+  }
+}
+
+@media (max-height: 600px) {
+  .btns a {
+    padding: 1rem 0.75rem;
+  }
+}

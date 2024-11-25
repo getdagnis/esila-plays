@@ -1,0 +1,161 @@
+.animationWrapper {
+  position: relative;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: calc(110px * 1.2);
+  height: calc(180px * 1.2);
+}
+
+.animationBackground {
+  position: absolute;
+  display: block;
+  top: 3%;
+  left: 50%;
+  width: calc(90px * 1.2);
+  height: calc(150px * 1.2);
+  background-color: #aaaaaa;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.5rem;
+  transform: translateX(-50%);
+}
+
+.animationMain {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.partOnTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.grayscale {
+  filter: grayscale(1);
+}
+
+/**********************************************/
+/***************** ANIMATIONS *****************/
+/**********************************************/
+
+.animationActive {
+  background-color: #fced5e;
+  filter: grayscale(0);
+}
+
+.blink {
+  animation: blink 3s infinite linear;
+}
+
+.blinkAndBeat {
+  animation: blinkAndBeat 3s infinite linear;
+}
+
+.blinkAndBeat3 {
+  animation: blink 3s infinite linear;
+}
+
+.beat {
+  animation: beat 0.9s ease-in-out infinite;
+}
+
+.beat3 {
+  animation: beat3 0.9s ease-in-out infinite;
+}
+
+B .drinkTea {
+  transform: translate(-33.5%, -11%);
+  z-index: 99;
+}
+
+.moveMouth {
+  transform: translateX(30%);
+}
+
+.pulse {
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  44% {
+    opacity: 0;
+  }
+  45%,
+  53% {
+    opacity: 1;
+  }
+  54%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blinkAndBeat {
+  0%,
+  44% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  45%,
+  53% {
+    opacity: 1;
+  }
+  54%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes beat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes beat3 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(5px, 5px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1) translateX(-50%);
+    transform-origin: left center;
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.03) translateX(-50%);
+    transform-origin: left center;
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateX(-50%);
+    transform-origin: left center;
+    opacity: 0.75;
+  }
+}

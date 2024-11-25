@@ -2,7 +2,6 @@
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.1);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-  --button-primary-hover: #cdcdcdaa;
   font-family: var(--font-geist-sans);
   min-height: 100vh;
   display: flex;
@@ -21,47 +20,6 @@
 
 .main li:not(:last-of-type) {
   margin-bottom: 8px;
-}
-
-.btns {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  height: fit-content;
-  gap: 0.5rem;
-  max-width: 60rem;
-  margin: auto;
-}
-
-.btns a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2rem;
-  padding: 1.5rem 1rem;
-  border: none;
-  border: 1px solid transparent;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-  cursor: pointer;
-  font-size: 0.85rem;
-  line-height: 20px;
-  font-weight: 500;
-  user-select: none;
-}
-
-a.btnSound {
-  border: solid 2px #cdcdcdaa;
-  background: #cdcdcdaa;
-  cursor: grab;
-}
-
-a.btnSound:active {
-  cursor: grabbing;
-  border-color: crimson;
-}
-
-a.btnSound:hover {
-  border: solid 2px #fff5f5c2;
 }
 
 .footer {
@@ -91,10 +49,6 @@ a.btnSound:hover {
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
-  a.btnSound:hover {
-    background: var(--button-primary-hover);
-  }
-
   .footer a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -111,15 +65,6 @@ a.btnSound:hover {
     align-items: center;
   }
 
-  .btns a {
-    font-size: 12px;
-    padding: 1rem;
-  }
-
-  a.btnSound {
-    min-width: auto;
-  }
-
   .footer {
     flex-wrap: wrap;
     align-items: center;
@@ -131,10 +76,6 @@ a.btnSound:hover {
   .main {
     padding: 0;
     zoom: 0.8;
-  }
-
-  .btns a {
-    padding: 1rem 0.75rem;
   }
 }
 

@@ -1,28 +1,49 @@
 'use client';
 import React, { useState } from 'react';
-import styles from './page.module.css';
+import { SOUNDS } from './constants';
 import Characters from './components/Characters';
-import { soundFiles } from './constants';
+import styles from './page.module.css';
+import soundStyles from './page.sounds.module.css';
 
 export default function Home() {
   const [characterSounds, setCharacterSounds] = useState<{ [key: number]: HTMLAudioElement[] }>({});
+  const [currentDraggedSound, setCurrentDraggedSound] = useState<string | null>(null); // For touch handling
+  const [characterAnimations, setCharacterAnimations] = useState<{ [key: number]: string }>({});
+
   const isCharacterActive = (characterId: number) => {
     return characterSounds[characterId] && characterSounds[characterId].length > 0;
   };
 
   const handleSoundDrop = (characterId: number, sound: string) => {
-    if (soundFiles[Number(sound)]) {
-      const newAudio = new Audio(soundFiles[Number(sound)].path);
+    if (SOUNDS[Number(sound)]) {
+      const newAudio = new Audio(SOUNDS[Number(sound)].path);
       newAudio.loop = true;
-      newAudio.play();
+
       setCharacterSounds((prev) => {
         const updatedSounds = { ...prev };
-        if (!updatedSounds[characterId]) {
-          updatedSounds[characterId] = [];
+
+        // Stop currently playing sound for this character
+        if (updatedSounds[characterId]) {
+          updatedSounds[characterId].forEach((audio) => {
+            audio.pause();
+            audio.currentTime = 0;
+          });
         }
-        updatedSounds[characterId].push(newAudio);
+
+        // Replace with the new sound
+        updatedSounds[characterId] = [newAudio];
+
         return updatedSounds;
       });
+
+      // Start the new sound
+      newAudio.play();
+
+      // Set the animation
+      setCharacterAnimations((prev) => ({
+        ...prev,
+        [characterId]: SOUNDS[Number(sound)].name,
+      }));
     }
   };
 
@@ -38,14 +59,39 @@ export default function Home() {
       }
       return updatedSounds;
     });
+    setCharacterAnimations((prev) => ({
+      ...prev,
+      [characterId]: '',
+    }));
   };
 
-  const handleDragStart = (event: React.DragEvent, sound: string) => {
-    event.dataTransfer.setData('text/plain', sound);
+  const handleDragStart = (
+    event: React.DragEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>,
+    sound: string
+  ) => {
+    if ('dataTransfer' in event) {
+      // Desktop drag-and-drop
+      event.dataTransfer.setData('text/plain', sound);
+    } else {
+      // Mobile touch-and-hold
+      setCurrentDraggedSound(sound);
+    }
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    const touch = event.changedTouches[0];
+    const dropTarget = document.elementFromPoint(touch.pageX, touch.pageY);
+    const slotId = dropTarget?.getAttribute('data-swapy-slot');
+
+    if (slotId && currentDraggedSound) {
+      handleSoundDrop(Number(slotId), currentDraggedSound);
+    }
+
+    setCurrentDraggedSound(null); // Clear the dragged sound
   };
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} onTouchEnd={handleTouchEnd}>
       <main className={styles.main}>
         <h1>Alise&#39;s Soundboard 👾</h1>
         <Characters
@@ -54,14 +100,16 @@ export default function Home() {
           activeCharacters={Object.keys(characterSounds)
             .filter((id) => isCharacterActive(+id))
             .map(Number)}
+          animations={characterAnimations}
         />
-        <div className={styles.btns}>
-          {soundFiles.map((sound) => (
+        <div className={soundStyles.btns}>
+          {SOUNDS.map((sound) => (
             <a
               key={sound.id}
-              className={styles.btnSound}
+              className={soundStyles.btnSound}
               data-swapy-item={sound.id}
               onDragStart={(e) => handleDragStart(e, sound.id.toString())}
+              onTouchStart={(e) => handleDragStart(e, sound.id.toString())}
               style={{ backgroundColor: sound.color }}
               draggable
             >
